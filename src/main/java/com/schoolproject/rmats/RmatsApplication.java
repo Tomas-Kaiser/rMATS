@@ -1,7 +1,7 @@
 package com.schoolproject.rmats;
 
 import com.schoolproject.rmats.DB.Dao.JdbcDaoImpl;
-import com.schoolproject.rmats.model.Alian;
+import com.schoolproject.rmats.DB.Dao.Alian;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

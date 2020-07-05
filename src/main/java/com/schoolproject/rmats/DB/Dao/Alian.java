@@ -1,4 +1,4 @@
-package com.schoolproject.rmats.model;
+package com.schoolproject.rmats.DB.Dao;
 
 public class Alian {
     private int userId;

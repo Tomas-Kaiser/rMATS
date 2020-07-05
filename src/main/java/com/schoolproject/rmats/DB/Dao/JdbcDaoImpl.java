@@ -1,6 +1,5 @@
 package com.schoolproject.rmats.DB.Dao;
 
-import com.schoolproject.rmats.model.Alian;
 
 import java.sql.*;
 
