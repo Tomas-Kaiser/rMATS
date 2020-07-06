@@ -2,16 +2,26 @@ package com.schoolproject.rmats.model;
 
 import java.util.List;
 
-public class User {
+public class Customer {
     private int id;
     private String firstName;
     private String lasstName;
+    private String companyName;
     private String phoneNumber;
     private String email;
     private String password;
     private List<Ticket> ticketList;
     private List<Address> addressList;
 
+    public Customer(int id, String firstName, String lasstName, String companyName, String phoneNumber, String email, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lasstName = lasstName;
+        this.companyName = companyName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+    }
 
     public int getId() {
         return id;
@@ -45,6 +55,13 @@ public class User {
         return addressList;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public void setId(int id) {
         this.id = id;
