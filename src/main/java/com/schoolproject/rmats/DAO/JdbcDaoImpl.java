@@ -1,4 +1,4 @@
-package com.schoolproject.rmats.DB.Dao;
+package com.schoolproject.rmats.DAO;
 
 
 import java.sql.*;
