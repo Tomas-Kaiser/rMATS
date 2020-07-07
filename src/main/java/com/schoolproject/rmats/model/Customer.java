@@ -5,22 +5,26 @@ import java.util.List;
 public class Customer {
     private int id;
     private String firstName;
-    private String lasstName;
+    private String lastName;
     private String companyName;
     private String phoneNumber;
     private String email;
     private String password;
+    private int enabled;
     private List<Ticket> ticketList;
-    private List<Address> addressList;
+    private Address address;
 
-    public Customer(int id, String firstName, String lasstName, String companyName, String phoneNumber, String email, String password) {
+    public Customer(int id, String firstName, String lasstName, String companyName, String phoneNumber, String email, String password, int enabled, Address address, List<Ticket> ticketList) {
         this.id = id;
         this.firstName = firstName;
-        this.lasstName = lasstName;
+        this.lastName = lasstName;
         this.companyName = companyName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
+        this.enabled = enabled;
+        this.ticketList = ticketList;
+        this.address = address;
     }
 
     public int getId() {
@@ -31,8 +35,8 @@ public class Customer {
         return firstName;
     }
 
-    public String getLasstName() {
-        return lasstName;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPhoneNumber() {
@@ -51,12 +55,20 @@ public class Customer {
         return ticketList;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Address getAddress() {
+        return address;
     }
 
     public String getCompanyName() {
         return companyName;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
     }
 
     public void setCompanyName(String companyName) {
@@ -71,8 +83,8 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public void setLasstName(String lasstName) {
-        this.lasstName = lasstName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -91,8 +103,8 @@ public class Customer {
         this.ticketList = ticketList;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 

@@ -2,7 +2,7 @@ package com.schoolproject.rmats.model;
 
 public class ReplacementUnit {
     private int id;
-    private Boolean isProccessed;
+    private int isProcessed;
     private String status;
     private String carrier;
     private String trackingNumber;
@@ -10,12 +10,23 @@ public class ReplacementUnit {
     private String serialNumber;
     private String comment;
 
+    public ReplacementUnit(int id, int isProcessed, String status, String carrier, String trackingNumber, String model, String serialNumber, String comment) {
+        this.id = id;
+        this.isProcessed = isProcessed;
+        this.status = status;
+        this.carrier = carrier;
+        this.trackingNumber = trackingNumber;
+        this.model = model;
+        this.serialNumber = serialNumber;
+        this.comment = comment;
+    }
+
     public int getId() {
         return id;
     }
 
-    public Boolean getProccessed() {
-        return isProccessed;
+    public int isProcessed() {
+        return isProcessed;
     }
 
     public String getStatus() {
@@ -46,8 +57,8 @@ public class ReplacementUnit {
         this.id = id;
     }
 
-    public void setProccessed(Boolean proccessed) {
-        isProccessed = proccessed;
+    public void setProcessed(int processed) {
+        isProcessed = processed;
     }
 
     public void setStatus(String status) {

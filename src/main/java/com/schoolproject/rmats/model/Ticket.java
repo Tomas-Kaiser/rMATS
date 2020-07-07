@@ -10,11 +10,12 @@ public class Ticket {
     private Date raiseDate;
     private String comment;
 
-    public Ticket(int id, ReplacementUnit replacementUnit, FaultyUnit faultyUnit, Date raiseDate) {
+    public Ticket(int id, Date raiseDate, String comment, FaultyUnit faultyUnit, ReplacementUnit replacementUnit) {
         this.id = id;
-        this.replacementUnit = replacementUnit;
+        this.raiseDate = raiseDate;
+        this.comment = comment;
         this.faultyUnit = faultyUnit;
-        this.raiseDate = new Date();
+        this.replacementUnit = replacementUnit;
     }
 
     public int getId() {
@@ -42,7 +43,7 @@ public class Ticket {
     }
 
     public void setReplacementUnit(ReplacementUnit replacementUnit) {
-        this.replacementUnit = new ReplacementUnit();
+        this.replacementUnit = replacementUnit;
     }
 
     public void setFaultyUnit(FaultyUnit faultyUnit) {

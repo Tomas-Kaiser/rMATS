@@ -5,6 +5,12 @@ public class FaultyUnit {
     private String model;
     private String serialNumber;
 
+    public FaultyUnit(int id, String model, String serialNumber) {
+        this.id = id;
+        this.model = model;
+        this.serialNumber = serialNumber;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

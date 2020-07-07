@@ -4,7 +4,16 @@ public class Address {
     private int id;
     private String street;
     private String zipCode;
+    private String city;
     private String country;
+
+    public Address(int id, String street, String zipCode, String city, String country) {
+        this.id = id;
+        this.street = street;
+        this.zipCode = zipCode;
+        this.city = city;
+        this.country = country;
+    }
 
     public int getId() {
         return id;
