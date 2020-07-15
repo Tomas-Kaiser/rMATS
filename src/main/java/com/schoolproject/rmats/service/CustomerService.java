@@ -1,13 +1,7 @@
 package com.schoolproject.rmats.service;
 
-import com.schoolproject.rmats.dao.AddressRepository;
-import com.schoolproject.rmats.dao.CustomerRepository;
-import com.schoolproject.rmats.dao.FaultyUnitRepository;
-import com.schoolproject.rmats.dao.TicketRepository;
-import com.schoolproject.rmats.model.Address;
-import com.schoolproject.rmats.model.Customer;
-import com.schoolproject.rmats.model.FaultyUnit;
-import com.schoolproject.rmats.model.Ticket;
+import com.schoolproject.rmats.dao.*;
+import com.schoolproject.rmats.model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +18,15 @@ public class CustomerService {
     private final TicketRepository ticketRepository;
     private final FaultyUnitRepository faultyUnitRepository;
     private final AddressRepository addressRepository;
+    private final AuthorizationRepository authorizationRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository, TicketRepository ticketRepository, FaultyUnitRepository faultyUnitRepository, AddressRepository addressRepository) {
+    public CustomerService(CustomerRepository customerRepository, TicketRepository ticketRepository, FaultyUnitRepository faultyUnitRepository, AddressRepository addressRepository, AuthorizationRepository authorizationRepository) {
         this.customerRepository = customerRepository;
         this.ticketRepository = ticketRepository;
         this.faultyUnitRepository = faultyUnitRepository;
         this.addressRepository = addressRepository;
+        this.authorizationRepository = authorizationRepository;
     }
 
     @Transactional
@@ -80,5 +76,10 @@ public class CustomerService {
 
     public List<Address> getAllAddresses(int customerId){
         return addressRepository.findByUserId(customerId);
+    }
+
+    @Transactional
+    public void addAuthorization(Authorization authorization){
+        authorizationRepository.save(authorization);
     }
 }

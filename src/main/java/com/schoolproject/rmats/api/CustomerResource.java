@@ -1,14 +1,8 @@
 package com.schoolproject.rmats.api;
 
-import com.schoolproject.rmats.api.transition.object.AddressTO;
-import com.schoolproject.rmats.api.transition.object.CustomerTO;
-import com.schoolproject.rmats.api.transition.object.FaultyTO;
-import com.schoolproject.rmats.api.transition.object.TicketTO;
-import com.schoolproject.rmats.model.Address;
-import com.schoolproject.rmats.model.FaultyUnit;
-import com.schoolproject.rmats.model.Ticket;
+import com.schoolproject.rmats.api.transition.object.*;
+import com.schoolproject.rmats.model.*;
 import com.schoolproject.rmats.service.CustomerService;
-import com.schoolproject.rmats.model.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -134,5 +128,18 @@ public class CustomerResource {
     @GetMapping("/{id:\\d+}/address")
     public List<Address> getAllAddresses(@PathVariable(name = "id") int customerId){
         return customerService.getAllAddresses(customerId);
+    }
+
+    @Validated
+    @PostMapping("/authorization")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addAuthorization(@RequestBody AuthorizationTO authorization){
+// TODO: Refactor the code below into private method
+        log.info("action=addAuthority, receive/authorization, email={}", authorization.getEmail());
+        Authorization entity = new Authorization();
+        entity.setAuthority(authorization.getAuthority());
+        entity.setEmail(authorization.getEmail());
+        customerService.addAuthorization(entity);
+        log.info("action=addAuthorityEnd");
     }
 }
