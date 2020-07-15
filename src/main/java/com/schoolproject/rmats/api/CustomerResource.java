@@ -1,5 +1,9 @@
 package com.schoolproject.rmats.api;
 
+import com.schoolproject.rmats.api.transition.object.AddressTO;
+import com.schoolproject.rmats.api.transition.object.CustomerTO;
+import com.schoolproject.rmats.api.transition.object.FaultyTO;
+import com.schoolproject.rmats.api.transition.object.TicketTO;
 import com.schoolproject.rmats.model.Address;
 import com.schoolproject.rmats.model.FaultyUnit;
 import com.schoolproject.rmats.model.Ticket;

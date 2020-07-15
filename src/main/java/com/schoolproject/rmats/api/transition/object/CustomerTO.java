@@ -1,4 +1,4 @@
-package com.schoolproject.rmats.api;
+package com.schoolproject.rmats.api.transition.object;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;
