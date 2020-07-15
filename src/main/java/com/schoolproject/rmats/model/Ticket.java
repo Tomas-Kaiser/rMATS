@@ -1,61 +1,55 @@
 package com.schoolproject.rmats.model;
 
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "tickets", schema = "sql_rmats")
 public class Ticket {
-    private int id;
-    private ReplacementUnit replacementUnit;
-    private FaultyUnit faultyUnit;
+    @Id
+    @Column(name = "ticket_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "user_id")
+    private Integer userId;
+    @Column(name = "raise_date")
     private Date raiseDate;
+    @Column(name = "cust_comment")
     private String comment;
 
-    public Ticket(int id, Date raiseDate, String comment, FaultyUnit faultyUnit, ReplacementUnit replacementUnit) {
-        this.id = id;
-        this.raiseDate = raiseDate;
-        this.comment = comment;
-        this.faultyUnit = faultyUnit;
-        this.replacementUnit = replacementUnit;
+    public Ticket() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public ReplacementUnit getReplacementUnit() {
-        return replacementUnit;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public FaultyUnit getFaultyUnit() {
-        return faultyUnit;
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Date getRaiseDate() {
         return raiseDate;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setReplacementUnit(ReplacementUnit replacementUnit) {
-        this.replacementUnit = replacementUnit;
-    }
-
-    public void setFaultyUnit(FaultyUnit faultyUnit) {
-        this.faultyUnit = faultyUnit;
-    }
-
     public void setRaiseDate(Date raiseDate) {
         this.raiseDate = raiseDate;
+    }
+
+    public String getComment() {
+        return comment;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
     }
-
 }
