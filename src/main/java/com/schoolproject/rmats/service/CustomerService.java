@@ -33,14 +33,6 @@ public class CustomerService {
         this.addressRepository = addressRepository;
     }
 
-    public Customer getCustomerByEmail() {
-        // To get an email from the login form
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String email = authentication.getName();
-//        return customerDAO.getCustomerByEmail(email);
-        return null;
-    }
-
     @Transactional
     public void createCustomer(Customer customer) {
         log.info("action=createCustomerStart, lastName={}, email={}", customer.getLastName(), customer.getEmail());

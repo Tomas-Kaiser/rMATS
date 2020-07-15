@@ -131,9 +131,4 @@ public class CustomerResource {
     public List<Address> getAllAddresses(@PathVariable(name = "id") int customerId){
         return customerService.getAllAddresses(customerId);
     }
-
-    @GetMapping(path = "/details")
-    public Customer getCustomerByEmail() {
-        return customerService.getCustomerByEmail();
-    }
 }
