@@ -30,6 +30,11 @@ public class CustomerResource {
         this.customerService = customerService;
     }
 
+    @GetMapping
+    public String customerPage(){
+        return "<h1>This is customer</h1>";
+    }
+
     @Validated
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
