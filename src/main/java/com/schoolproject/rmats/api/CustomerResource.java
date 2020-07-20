@@ -30,7 +30,7 @@ public class CustomerResource {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping("")
     public String customerPage(){
         return "<h1>This is customer</h1>";
     }
@@ -146,5 +146,24 @@ public class CustomerResource {
         entity.setEmail(authorization.getEmail());
         customerService.addAuthorization(entity);
         log.info("action=addAuthorityEnd");
+    }
+
+    @Validated
+    @PostMapping("/{ticketId:\\d+}/replacement")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createReplacementUnits(@PathVariable(name = "ticketId") int ticketId,
+                                       @Valid @NotNull @RequestBody ReplacementTO replacementUnit
+                                       ){
+// TODO: Refactor the code below into private method
+        ReplacementUnit entity = new ReplacementUnit();
+        entity.setTicketId(replacementUnit.getTicketId());
+        entity.setProcessed(false);
+        entity.setStatus("In progress");
+        entity.setCarrier(replacementUnit.getCarrier());
+        entity.setModel(replacementUnit.getModel());
+        entity.setSerialNumber(replacementUnit.getNewSerialNumber());
+        entity.setTrackingNumber(replacementUnit.getTrackingNumber());
+        entity.setComment(replacementUnit.getComment());
+        customerService.createReplacementUnit(entity);
     }
 }

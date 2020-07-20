@@ -9,6 +9,11 @@ public class ReplacementUnit {
     @Column(name = "replacement_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "ticket_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer ticketId;
+
 //    @Column(name = "isProcessed", columnDefinition = "TINYINT")
 //    @Type(type = "org.hibernate.type.NumericBooleanType")
     @Transient
@@ -17,7 +22,7 @@ public class ReplacementUnit {
     private String status;
     private String carrier;
     @Column(name = "tracking_number")
-    private Integer trackingNumber;
+    private String trackingNumber;
     private String model;
     @Column(name = "new_serial_number")
     private String serialNumber;
@@ -27,7 +32,7 @@ public class ReplacementUnit {
     public ReplacementUnit() {
     }
 
-    public ReplacementUnit(Integer id, Boolean isProcessed, String status, String carrier, Integer trackingNumber, String model, String serialNumber, String comment) {
+    public ReplacementUnit(Integer id, Boolean isProcessed, String status, String carrier, String trackingNumber, String model, String serialNumber, String comment) {
         this.id = id;
         this.isProcessed = isProcessed;
         this.status = status;
@@ -54,7 +59,7 @@ public class ReplacementUnit {
         return carrier;
     }
 
-    public Integer getTrackingNumber() {
+    public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -86,7 +91,7 @@ public class ReplacementUnit {
         this.carrier = carrier;
     }
 
-    public void setTrackingNumber(Integer trackingNumber) {
+    public void setTrackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
     }
 
@@ -102,4 +107,15 @@ public class ReplacementUnit {
         this.comment = comment;
     }
 
+    public Integer getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(Integer ticketId) {
+        this.ticketId = ticketId;
+    }
+
+    public Boolean getProcessed() {
+        return isProcessed;
+    }
 }

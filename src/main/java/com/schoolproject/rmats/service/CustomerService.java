@@ -19,14 +19,21 @@ public class CustomerService {
     private final FaultyUnitRepository faultyUnitRepository;
     private final AddressRepository addressRepository;
     private final AuthorizationRepository authorizationRepository;
+    private final ReplacementRepository replacementRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository, TicketRepository ticketRepository, FaultyUnitRepository faultyUnitRepository, AddressRepository addressRepository, AuthorizationRepository authorizationRepository) {
+    public CustomerService(CustomerRepository customerRepository,
+                           TicketRepository ticketRepository,
+                           FaultyUnitRepository faultyUnitRepository,
+                           AddressRepository addressRepository,
+                           AuthorizationRepository authorizationRepository,
+                           ReplacementRepository replacementRepository) {
         this.customerRepository = customerRepository;
         this.ticketRepository = ticketRepository;
         this.faultyUnitRepository = faultyUnitRepository;
         this.addressRepository = addressRepository;
         this.authorizationRepository = authorizationRepository;
+        this.replacementRepository = replacementRepository;
     }
 
     @Transactional
@@ -81,5 +88,10 @@ public class CustomerService {
     @Transactional
     public void addAuthorization(Authorization authorization){
         authorizationRepository.save(authorization);
+    }
+
+    @Transactional
+    public void createReplacementUnit(ReplacementUnit replacementUnit){
+        replacementRepository.save(replacementUnit);
     }
 }
