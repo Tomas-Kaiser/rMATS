@@ -2,6 +2,7 @@ package com.schoolproject.rmats.api;
 
 import com.schoolproject.rmats.api.transition.object.ReplacementTO;
 import com.schoolproject.rmats.model.ReplacementUnit;
+import com.schoolproject.rmats.model.Ticket;
 import com.schoolproject.rmats.service.AdminService;
 import com.schoolproject.rmats.service.CustomerService;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @RequestMapping("/admin")
 @RestController
@@ -29,6 +31,11 @@ public class AdminResource {
     @GetMapping("/")
     public String admin(){
         return ("<h1>This is for admin!</h1>");
+    }
+
+    @GetMapping("/tickets")
+    public List<Ticket> getAllTickets(){
+        return adminService.getAllTickets();
     }
 
     @Validated
