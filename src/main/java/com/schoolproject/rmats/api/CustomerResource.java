@@ -21,13 +21,12 @@ public class CustomerResource {
 
     public static final Logger log = LogManager.getLogger(CustomerResource.class);
     private final CustomerService customerService;
-
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public CustomerResource(CustomerService customerService) {
+    public CustomerResource(CustomerService customerService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.customerService = customerService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @GetMapping("")
