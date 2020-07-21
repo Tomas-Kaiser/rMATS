@@ -94,4 +94,16 @@ public class CustomerService {
     public void createReplacementUnit(ReplacementUnit replacementUnit){
         replacementRepository.save(replacementUnit);
     }
+    @Transactional
+    public void updateReplacementUnit(ReplacementUnit replacementUnitUpdate, int replacementId){
+        ReplacementUnit replacementUnit = replacementRepository.findById(replacementId);
+        replacementUnit.setComment(replacementUnitUpdate.getComment());
+        replacementUnit.setSerialNumber(replacementUnitUpdate.getTrackingNumber());
+        replacementUnit.setModel(replacementUnitUpdate.getModel());
+        replacementUnit.setCarrier(replacementUnitUpdate.getCarrier());
+        replacementUnit.setStatus(replacementUnitUpdate.getStatus());
+        replacementUnit.setProcessed(replacementUnitUpdate.getProcessed());
+        replacementUnit.setTrackingNumber(replacementUnitUpdate.getTrackingNumber());
+        replacementRepository.save(replacementUnit);
+    }
 }

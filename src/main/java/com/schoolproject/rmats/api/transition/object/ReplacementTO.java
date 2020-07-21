@@ -18,19 +18,27 @@ public class ReplacementTO {
     private String newSerialNumber;
     private String comment;
 
+    private String status;
+    private Boolean isProcessed;
+
+
     @JsonCreator
     public ReplacementTO(@JsonProperty("ticketId") Integer ticketId,
                          @JsonProperty("carrier") String carrier,
                          @JsonProperty("trackingNumber") String trackingNumber,
                          @JsonProperty("model") String model,
                          @JsonProperty("newSerialNumber") String newSerialNumber,
-                         @JsonProperty("comment") String comment) {
+                         @JsonProperty("comment") String comment,
+                         @JsonProperty("status") String status,
+                         @JsonProperty("isProcessed") Boolean isProcessed) {
         this.ticketId = ticketId;
         this.carrier = carrier;
         this.trackingNumber = trackingNumber;
         this.model = model;
         this.newSerialNumber = newSerialNumber;
         this.comment = comment;
+        this.status = status;
+        this.isProcessed = isProcessed;
     }
 
     public Integer getTicketId() {
@@ -79,5 +87,21 @@ public class ReplacementTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Boolean getProcessed() {
+        return isProcessed;
+    }
+
+    public void setProcessed(Boolean processed) {
+        isProcessed = processed;
     }
 }
