@@ -147,42 +147,4 @@ public class CustomerResource {
         customerService.addAuthorization(entity);
         log.info("action=addAuthorityEnd");
     }
-
-    @Validated
-    @PostMapping("/{ticketId:\\d+}/replacement")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createReplacementUnits(@PathVariable(name = "ticketId") int ticketId,
-                                       @Valid @NotNull @RequestBody ReplacementTO replacementUnit
-                                       ){
-// TODO: Refactor the code below into private method
-        ReplacementUnit entity = new ReplacementUnit();
-        entity.setTicketId(replacementUnit.getTicketId());
-        entity.setProcessed(false);
-        entity.setStatus("In progress");
-        entity.setCarrier(replacementUnit.getCarrier());
-        entity.setModel(replacementUnit.getModel());
-        entity.setSerialNumber(replacementUnit.getNewSerialNumber());
-        entity.setTrackingNumber(replacementUnit.getTrackingNumber());
-        entity.setComment(replacementUnit.getComment());
-        customerService.createReplacementUnit(entity);
-    }
-
-    @Validated
-    @PutMapping("/{replacementId:\\d+}/replacement")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void updateReplacementUnit(@PathVariable(name = "replacementId") int replacementId, @Valid @NotNull @RequestBody ReplacementTO replacementUnit){
-        // TODO: Refactor the code below into private method
-        log.info("action=UpdatateReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
-        ReplacementUnit entity = new ReplacementUnit();
-        entity.setTicketId(replacementUnit.getTicketId());
-        entity.setProcessed(replacementUnit.getProcessed());
-        entity.setStatus(replacementUnit.getStatus());
-        entity.setCarrier(replacementUnit.getCarrier());
-        entity.setModel(replacementUnit.getModel());
-        entity.setSerialNumber(replacementUnit.getNewSerialNumber());
-        entity.setTrackingNumber(replacementUnit.getTrackingNumber());
-        entity.setComment(replacementUnit.getComment());
-        log.info("action=UpdatateReplacementUnitEnd, receive/model, model={} ", replacementUnit.getModel());
-        customerService.updateReplacementUnit(entity, replacementId);
-    }
 }

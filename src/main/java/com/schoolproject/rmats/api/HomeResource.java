@@ -10,9 +10,4 @@ public class HomeResource {
     public String home(){
         return ("<h1>Home</h1>");
     }
-
-    @GetMapping("/admin")
-    public String admin(){
-        return ("<h1>This is for admin!</h1>");
-    }
 }
