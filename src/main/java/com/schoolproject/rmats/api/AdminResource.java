@@ -28,7 +28,7 @@ public class AdminResource {
         this.adminService = adminService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String admin(){
         return ("<h1>This is for admin!</h1>");
     }

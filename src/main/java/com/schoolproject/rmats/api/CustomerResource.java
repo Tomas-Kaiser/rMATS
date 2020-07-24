@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RequestMapping("/customer")
+@CrossOrigin
 @RestController
 public class CustomerResource {
 
