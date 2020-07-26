@@ -1,5 +1,6 @@
 package com.schoolproject.rmats.service;
 
+import com.schoolproject.rmats.api.rt.CustomerRT;
 import com.schoolproject.rmats.dao.CustomerRepository;
 import com.schoolproject.rmats.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,16 @@ public class AuthService {
         this.customerRepository = customerRepository;
     }
 
-    public String getCustomerId(){
+    public CustomerRT getCustomerId(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        System.out.println(currentPrincipalName);
-
         Customer currentCustomer = customerRepository.findByEmail(currentPrincipalName);
-        System.out.println(currentCustomer.getId());
-        return currentPrincipalName + " " + currentCustomer.getId();
+
+        CustomerRT user = new CustomerRT();
+        user.setId(currentCustomer.getId());
+        user.setUsername(currentCustomer.getEmail());
+
+        //currentPrincipalName + " " + currentCustomer.getId()
+        return user;
     }
 }

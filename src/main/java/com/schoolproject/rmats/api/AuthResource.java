@@ -1,7 +1,7 @@
 package com.schoolproject.rmats.api;
 
+import com.schoolproject.rmats.api.rt.CustomerRT;
 import com.schoolproject.rmats.service.AuthService;
-import com.schoolproject.rmats.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +31,7 @@ public class AuthResource {
 
     @GetMapping("/customer/auth")
     @ResponseBody
-    public String customerAuthentication(){
+    public CustomerRT customerAuthentication(){
         return authService.getCustomerId();
     }
 }
