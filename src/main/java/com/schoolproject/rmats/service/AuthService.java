@@ -22,11 +22,14 @@ public class AuthService {
         String currentPrincipalName = authentication.getName();
         Customer currentCustomer = customerRepository.findByEmail(currentPrincipalName);
 
-        CustomerRT user = new CustomerRT();
-        user.setId(currentCustomer.getId());
-        user.setUsername(currentCustomer.getEmail());
+        CustomerRT customerRT = new CustomerRT();
+        customerRT.setId(currentCustomer.getId());
+        customerRT.setFirstName(currentCustomer.getEmail());
+        customerRT.setLastName(currentCustomer.getLastName());
+        customerRT.setEmail(currentCustomer.getEmail());
+        customerRT.setCompanyName(currentCustomer.getCompanyName());
+        customerRT.setPhoneNumber(currentCustomer.getPhoneNumber());
 
-        //currentPrincipalName + " " + currentCustomer.getId()
-        return user;
+        return customerRT;
     }
 }
