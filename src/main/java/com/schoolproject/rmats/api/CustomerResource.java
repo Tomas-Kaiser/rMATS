@@ -1,6 +1,6 @@
 package com.schoolproject.rmats.api;
 
-import com.schoolproject.rmats.api.transition.object.*;
+import com.schoolproject.rmats.api.to.*;
 import com.schoolproject.rmats.model.*;
 import com.schoolproject.rmats.service.CustomerService;
 import org.apache.logging.log4j.LogManager;

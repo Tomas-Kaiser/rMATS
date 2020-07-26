@@ -1,6 +1,6 @@
 package com.schoolproject.rmats.api;
 
-import com.schoolproject.rmats.api.transition.object.ReplacementTO;
+import com.schoolproject.rmats.api.to.ReplacementTO;
 import com.schoolproject.rmats.model.ReplacementUnit;
 import com.schoolproject.rmats.model.Ticket;
 import com.schoolproject.rmats.service.AdminService;
