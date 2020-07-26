@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@RequestMapping("/customer")
 @CrossOrigin
 @RestController
 public class CustomerResource {
@@ -30,14 +29,9 @@ public class CustomerResource {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @GetMapping("")
-    public String customerPage(){
-        return "<h1>This is customer</h1>";
-    }
-
     // Creating a new customer
     @Validated
-    @PostMapping
+    @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
     public void createCustomer(@Valid @NotNull @RequestBody CustomerTO customer) {
         log.info("action=createCustomerStart, receive=/customer, method=POST, company={}", customer.getCompany());
@@ -61,7 +55,7 @@ public class CustomerResource {
 
     // Creating a new ticket
     @Validated
-    @PostMapping("/{id:\\d+}/ticket")
+    @PostMapping("/customers/{id:\\d+}/ticket")
     @ResponseStatus(HttpStatus.CREATED)
     public void createTicket(@PathVariable(name = "id") int customerId, @Valid @NotNull @RequestBody TicketTO ticket) {
         log.info("action=createTicket, receive=customerId/ticket, method=POST, custComment={}", ticket.getCustComment());
@@ -79,14 +73,14 @@ public class CustomerResource {
     }
 
     // Get all Tickets
-    @GetMapping("/{id:\\d+}/tickets")
+    @GetMapping("/customers/{id:\\d+}/tickets")
     public List<Ticket> getAllTickets(@PathVariable(name = "id") int customerId) {
         return customerService.getAllTickets(customerId);
     }
 
     // Create a faulty unit
     @Validated
-    @PostMapping("/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
+    @PostMapping("/customers/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
     @ResponseStatus(HttpStatus.CREATED)
     public void createFaulty(@PathVariable(name = "id") int customerId,
                              @PathVariable(name = "ticketId") int ticketId,
@@ -107,7 +101,7 @@ public class CustomerResource {
     }
 
     // Get all faulty units
-    @GetMapping("/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
+    @GetMapping("/customers/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
     public List<FaultyUnit> getFaulty(@PathVariable(name = "id") int customerId,
                                 @PathVariable(name = "ticketId") int ticketId) {
 
@@ -116,7 +110,7 @@ public class CustomerResource {
 
     // Adding a new address
     @Validated
-    @PostMapping("/{id:\\d+}/address")
+    @PostMapping("/customers/{id:\\d+}/address")
     @ResponseStatus(HttpStatus.CREATED)
     public void addAddress(@PathVariable(name = "id") int customerId,
                            @Valid @NotNull @RequestBody AddressTO address) {
@@ -137,14 +131,14 @@ public class CustomerResource {
     }
 
     // Getting an address
-    @GetMapping("/{id:\\d+}/address")
+    @GetMapping("/customers/{id:\\d+}/address")
     public List<Address> getAllAddresses(@PathVariable(name = "id") int customerId){
         return customerService.getAllAddresses(customerId);
     }
 
     // Set up an authorization
     @Validated
-    @PostMapping("/authorization")
+    @PostMapping("/customers/authorization")
     @ResponseStatus(HttpStatus.CREATED)
     public void addAuthorization(@RequestBody AuthorizationTO authorization){
 // TODO: Refactor the code below into private method
