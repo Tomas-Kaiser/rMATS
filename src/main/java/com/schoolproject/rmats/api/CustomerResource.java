@@ -35,6 +35,7 @@ public class CustomerResource {
         return "<h1>This is customer</h1>";
     }
 
+    // Creating a new customer
     @Validated
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -58,6 +59,7 @@ public class CustomerResource {
         return entity;
     }
 
+    // Creating a new ticket
     @Validated
     @PostMapping("/{id:\\d+}/ticket")
     @ResponseStatus(HttpStatus.CREATED)
@@ -76,11 +78,13 @@ public class CustomerResource {
         return entity;
     }
 
+    // Get all Tickets
     @GetMapping("/{id:\\d+}/tickets")
     public List<Ticket> getAllTickets(@PathVariable(name = "id") int customerId) {
         return customerService.getAllTickets(customerId);
     }
 
+    // Create a faulty unit
     @Validated
     @PostMapping("/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
     @ResponseStatus(HttpStatus.CREATED)
@@ -102,6 +106,7 @@ public class CustomerResource {
         return entity;
     }
 
+    // Get all faulty units
     @GetMapping("/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
     public List<FaultyUnit> getFaulty(@PathVariable(name = "id") int customerId,
                                 @PathVariable(name = "ticketId") int ticketId) {
@@ -109,6 +114,7 @@ public class CustomerResource {
         return customerService.getAllFaultyUnits(ticketId);
     }
 
+    // Adding a new address
     @Validated
     @PostMapping("/{id:\\d+}/address")
     @ResponseStatus(HttpStatus.CREATED)
@@ -130,11 +136,13 @@ public class CustomerResource {
         return entity;
     }
 
+    // Getting an address
     @GetMapping("/{id:\\d+}/address")
     public List<Address> getAllAddresses(@PathVariable(name = "id") int customerId){
         return customerService.getAllAddresses(customerId);
     }
 
+    // Set up an authorization
     @Validated
     @PostMapping("/authorization")
     @ResponseStatus(HttpStatus.CREATED)
