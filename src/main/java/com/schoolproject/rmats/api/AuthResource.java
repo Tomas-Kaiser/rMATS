@@ -19,10 +19,6 @@ public class AuthResource {
         this.authService = authService;
     }
 
-    @GetMapping("/")
-    public String home(){
-        return ("<h1>Home</h1>");
-    }
 
     @GetMapping("/admin/auth")
     public String adminAuthentication(){
