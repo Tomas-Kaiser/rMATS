@@ -24,7 +24,7 @@ public class AuthService {
 
         CustomerRT customerRT = new CustomerRT();
         customerRT.setId(currentCustomer.getId());
-        customerRT.setFirstName(currentCustomer.getEmail());
+        customerRT.setFirstName(currentCustomer.getFirstName());
         customerRT.setLastName(currentCustomer.getLastName());
         customerRT.setEmail(currentCustomer.getEmail());
         customerRT.setCompanyName(currentCustomer.getCompanyName());
