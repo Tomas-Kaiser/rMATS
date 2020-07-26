@@ -4,7 +4,6 @@ import com.schoolproject.rmats.api.transition.object.ReplacementTO;
 import com.schoolproject.rmats.model.ReplacementUnit;
 import com.schoolproject.rmats.model.Ticket;
 import com.schoolproject.rmats.service.AdminService;
-import com.schoolproject.rmats.service.CustomerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
