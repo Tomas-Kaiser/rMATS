@@ -1,6 +1,7 @@
 package com.schoolproject.rmats.service;
 
 import com.schoolproject.rmats.api.rt.FaultyRT;
+import com.schoolproject.rmats.api.rt.TicketRT;
 import com.schoolproject.rmats.dao.*;
 import com.schoolproject.rmats.model.*;
 import org.apache.logging.log4j.LogManager;
@@ -45,10 +46,16 @@ public class CustomerService {
     }
 
     @Transactional
-    public void createTicket(Ticket ticket) {
+    public TicketRT createTicket(Ticket ticket) {
         log.info("action=createTicketStart, raiseDate={}, customerComment={}", ticket.getRaiseDate(), ticket.getComment());
         ticketRepository.save(ticket);
         log.info("action=createTicketEnd");
+
+        // TODO: Refactor the below code
+        TicketRT ticketRT = new TicketRT();
+        ticketRT.setId(ticket.getId());
+        System.out.println(ticket.getId());
+        return ticketRT;
     }
 
     public List<Ticket> getAllTickets(int userId){
@@ -61,13 +68,12 @@ public class CustomerService {
 
         faultyUnitRepository.save(faultyUnit);
         log.info("action=createTicketEnd");
-        // TODO: Refactpr the below code
+        // TODO: Refactor the below code
         log.info("action=createFaultyRTStart");
-        FaultyUnit faulty = faultyUnitRepository.findBySerialNumber(faultyUnit.getSerialNumber());
         FaultyRT faultyRT = new FaultyRT();
-        faultyRT.setId(faulty.getId());
-        faultyRT.setModel(faulty.getModel());
-        faultyRT.setSerialNumber((faulty.getSerialNumber()));
+        faultyRT.setId(faultyUnit.getId());
+        faultyRT.setModel(faultyUnit.getModel());
+        faultyRT.setSerialNumber((faultyUnit.getSerialNumber()));
         log.info("action=createFaultyRTEND");
 
         return faultyRT;

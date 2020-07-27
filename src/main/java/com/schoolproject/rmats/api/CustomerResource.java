@@ -1,6 +1,7 @@
 package com.schoolproject.rmats.api;
 
 import com.schoolproject.rmats.api.rt.FaultyRT;
+import com.schoolproject.rmats.api.rt.TicketRT;
 import com.schoolproject.rmats.api.to.*;
 import com.schoolproject.rmats.model.*;
 import com.schoolproject.rmats.service.CustomerService;
@@ -66,11 +67,12 @@ public class CustomerResource {
     @Validated
     @PostMapping("/customers/{id:\\d+}/ticket")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTicket(@PathVariable(name = "id") int customerId, @Valid @NotNull @RequestBody TicketTO ticket) {
+    @ResponseBody
+    public TicketRT createTicket(@PathVariable(name = "id") int customerId, @Valid @NotNull @RequestBody TicketTO ticket) {
         log.info("action=createTicket, receive=customerId/ticket, method=POST, custComment={}", ticket.getCustComment());
         Ticket entity = convertToEntity(ticket, customerId);
-        customerService.createTicket(entity);
         log.info("action=createTicketEnd");
+        return customerService.createTicket(entity);
     }
 
     private Ticket convertToEntity(TicketTO ticket, int customerId){
