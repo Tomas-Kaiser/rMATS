@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface FaultyUnitRepository extends JpaRepository<FaultyUnit, Integer> {
-    List<FaultyUnit> findByTicketId(int ticektId);
+    List<FaultyUnit> findByTicketId(int ticketId);
+    FaultyUnit findBySerialNumber(String serialNumber);
 }

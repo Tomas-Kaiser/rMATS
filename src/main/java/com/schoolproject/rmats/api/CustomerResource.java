@@ -1,5 +1,6 @@
 package com.schoolproject.rmats.api;
 
+import com.schoolproject.rmats.api.rt.FaultyRT;
 import com.schoolproject.rmats.api.to.*;
 import com.schoolproject.rmats.model.*;
 import com.schoolproject.rmats.service.CustomerService;
@@ -90,14 +91,15 @@ public class CustomerResource {
     @Validated
     @PostMapping("/customers/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createFaulty(@PathVariable(name = "id") int customerId,
-                             @PathVariable(name = "ticketId") int ticketId,
-                             @Valid @NotNull @RequestBody FaultyTO faultyUnit
+    @ResponseBody
+    public FaultyRT createFaulty(@PathVariable(name = "id") int customerId,
+                                 @PathVariable(name = "ticketId") int ticketId,
+                                 @Valid @NotNull @RequestBody FaultyTO faultyUnit
     ) {
         log.info("action=createFaultyUnit, receive=customerId/ticketId/FaultyUnit, method=POST, serialNumber={}", faultyUnit.getSerialNumber());
         FaultyUnit entity = convertToEntity(faultyUnit, ticketId);
-        customerService.createFaulty(entity);
         log.info("action=createFaultyUnitEnd");
+        return customerService.createFaulty(entity);
     }
 
     private FaultyUnit convertToEntity(FaultyTO faultyUnit, int ticketId){

@@ -1,5 +1,6 @@
 package com.schoolproject.rmats.service;
 
+import com.schoolproject.rmats.api.rt.FaultyRT;
 import com.schoolproject.rmats.dao.*;
 import com.schoolproject.rmats.model.*;
 import org.apache.logging.log4j.LogManager;
@@ -55,21 +56,21 @@ public class CustomerService {
     }
 
     @Transactional
-    public void createFaulty(FaultyUnit faultyUnit) {
+    public FaultyRT createFaulty(FaultyUnit faultyUnit) {
         log.info("action=createFaultyStart,  model={}",  faultyUnit.getModel());
 
         faultyUnitRepository.save(faultyUnit);
-        /*
-        Optional<Ticket> ticket = ticketRepository.findById(ticketId);
-        if (!ticket.isPresent() || !Objects.equals(ticket.get().getUserId(), userId)) {
-            throw new IllegalArgumentException("ticket not found");
-        }
-        Ticket ticketEntity = ticket.get();
-        FaultyUnit savedFaulty = faultyUnitDAO.save(faultyUnit);
-        //ticketEntity.setFaultyUnitId(savedFaulty.getId());
-        ticketRepository.save(ticketEntity);
-         */
         log.info("action=createTicketEnd");
+        // TODO: Refactpr the below code
+        log.info("action=createFaultyRTStart");
+        FaultyUnit faulty = faultyUnitRepository.findBySerialNumber(faultyUnit.getSerialNumber());
+        FaultyRT faultyRT = new FaultyRT();
+        faultyRT.setId(faulty.getId());
+        faultyRT.setModel(faulty.getModel());
+        faultyRT.setSerialNumber((faulty.getSerialNumber()));
+        log.info("action=createFaultyRTEND");
+
+        return faultyRT;
     }
 
     public List<FaultyUnit> getAllFaultyUnits(int ticketId) {
