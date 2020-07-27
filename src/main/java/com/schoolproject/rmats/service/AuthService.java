@@ -17,7 +17,7 @@ public class AuthService {
         this.customerRepository = customerRepository;
     }
 
-    public CustomerRT getCustomerId(){
+    public CustomerRT getCustomer(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         Customer currentCustomer = customerRepository.findByEmail(currentPrincipalName);

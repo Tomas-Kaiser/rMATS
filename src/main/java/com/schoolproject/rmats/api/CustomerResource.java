@@ -29,7 +29,7 @@ public class CustomerResource {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    // Creating a new customer
+    // Creating a new customer and assigning a customer role.
     @Validated
     @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,6 +38,14 @@ public class CustomerResource {
         Customer entity = convertToEntity(customer);
         customerService.createCustomer(entity);
         log.info("action=createCustomerEnd");
+
+        log.info("action=createCustomer&AddingAuthorizationStart, receive=/customer, method=POST, email={}", customer.getEmail());
+        // TODO: Refactor the below code!
+        Authorization entityAuth = new Authorization();
+        entityAuth.setAuthority("ROLE_CUSTOMER");
+        entityAuth.setEmail(customer.getEmail());
+        customerService.addAuthorization(entityAuth);
+        log.info("action=createCustomer&AddingAuthorizationEnd");
     }
 
     private Customer convertToEntity(CustomerTO customer) {

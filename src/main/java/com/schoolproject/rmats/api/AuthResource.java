@@ -29,6 +29,6 @@ public class AuthResource {
     @GetMapping("/customer/auth")
     @ResponseBody
     public CustomerRT customerAuthentication(){
-        return authService.getCustomerId();
+        return authService.getCustomer();
     }
 }
