@@ -45,7 +45,6 @@ public class CustomerService {
         log.info("action=createCustomerEnd");
     }
 
-    @Transactional
     public TicketRT createTicket(Ticket ticket) {
         log.info("action=createTicketStart, raiseDate={}, customerComment={}", ticket.getRaiseDate(), ticket.getComment());
         ticketRepository.save(ticket);
@@ -54,7 +53,7 @@ public class CustomerService {
         // TODO: Refactor the below code
         TicketRT ticketRT = new TicketRT();
         ticketRT.setId(ticket.getId());
-        System.out.println(ticket.getId());
+        ticketRT.setComment(ticket.getComment());
         return ticketRT;
     }
 
