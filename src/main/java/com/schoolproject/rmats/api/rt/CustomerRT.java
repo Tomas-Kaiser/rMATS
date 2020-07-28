@@ -7,7 +7,6 @@ public class CustomerRT {
     private String companyName;
     private String phoneNumber;
     private String email;
-    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -57,11 +56,4 @@ public class CustomerRT {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

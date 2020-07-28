@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
+
 @Service
 public class AuthService {
     private final CustomerRepository customerRepository;
@@ -29,7 +31,6 @@ public class AuthService {
         customerRT.setEmail(currentCustomer.getEmail());
         customerRT.setCompanyName(currentCustomer.getCompanyName());
         customerRT.setPhoneNumber(currentCustomer.getPhoneNumber());
-        customerRT.setPassword(currentCustomer.getPassword());
 
         return customerRT;
     }
