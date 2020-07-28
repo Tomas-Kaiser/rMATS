@@ -29,6 +29,7 @@ public class AuthService {
         customerRT.setEmail(currentCustomer.getEmail());
         customerRT.setCompanyName(currentCustomer.getCompanyName());
         customerRT.setPhoneNumber(currentCustomer.getPhoneNumber());
+        customerRT.setPassword(currentCustomer.getPassword());
 
         return customerRT;
     }

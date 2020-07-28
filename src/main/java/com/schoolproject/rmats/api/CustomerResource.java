@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -35,10 +36,16 @@ public class CustomerResource {
     @Validated
     @PostMapping("/customer")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCustomer(@Valid @NotNull @RequestBody CustomerTO customer) {
+    public String createCustomer(@Valid @NotNull @RequestBody CustomerTO customer) {
         log.info("action=createCustomerStart, receive=/customer, method=POST, company={}", customer.getCompany());
         Customer entity = convertToEntity(customer);
-        customerService.createCustomer(entity);
+        try{
+            customerService.createCustomer(entity);
+        } catch (Exception ex){
+            System.out.println("Exception HERE: ");
+            System.out.println(ex);
+            return "Customer already created!";
+        }
         log.info("action=createCustomerEnd");
 
         log.info("action=createCustomer&AddingAuthorizationStart, receive=/customer, method=POST, email={}", customer.getEmail());
@@ -48,6 +55,7 @@ public class CustomerResource {
         entityAuth.setEmail(customer.getEmail());
         customerService.addAuthorization(entityAuth);
         log.info("action=createCustomer&AddingAuthorizationEnd");
+        return "Customer created!";
     }
 
     private Customer convertToEntity(CustomerTO customer) {
