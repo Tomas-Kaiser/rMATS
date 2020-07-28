@@ -1,5 +1,7 @@
 package com.schoolproject.rmats.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,8 +16,8 @@ public class ReplacementUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ticketId;
 
-//    @Column(name = "isProcessed", columnDefinition = "TINYINT")
-//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    @Column(name = "isProcessed", columnDefinition = "TINYINT")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     @Transient
     private Boolean isProcessed;
     @Column(name = "current_status")

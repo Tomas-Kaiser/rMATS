@@ -169,4 +169,12 @@ public class CustomerResource {
         customerService.addAuthorization(entity);
         log.info("action=addAuthorityEnd");
     }
+
+    // Get Replacement unit detail
+    @GetMapping("/customers/{ticketId:\\d+}/replacements")
+    public List<ReplacementUnit> getReplacement(@PathVariable(name = "ticketId") int ticketId){
+        log.info("action=getReplacementStart");
+        log.info("action=getReplacementEnd");
+        return customerService.getReplacement(ticketId);
+    }
 }

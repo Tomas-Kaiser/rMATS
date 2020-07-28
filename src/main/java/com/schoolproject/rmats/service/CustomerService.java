@@ -96,4 +96,8 @@ public class CustomerService {
         authorizationRepository.save(authorization);
     }
 
+    public List<ReplacementUnit> getReplacement(int ticketId){
+        return replacementRepository.findByTicketId(ticketId);
+    }
+
 }

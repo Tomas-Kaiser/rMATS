@@ -7,6 +7,7 @@ public class CustomerRT {
     private String companyName;
     private String phoneNumber;
     private String email;
+    private Boolean isAdmin;
 
     public String getFirstName() {
         return firstName;
@@ -56,4 +57,11 @@ public class CustomerRT {
         this.email = email;
     }
 
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 }
