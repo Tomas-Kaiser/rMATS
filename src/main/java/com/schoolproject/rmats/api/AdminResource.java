@@ -17,6 +17,7 @@ import java.util.List;
 
 @RequestMapping("/admin")
 @RestController
+@CrossOrigin
 public class AdminResource {
     public static final Logger log = LogManager.getLogger(AdminResource.class);
 
