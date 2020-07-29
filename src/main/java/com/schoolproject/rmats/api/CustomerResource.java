@@ -91,11 +91,7 @@ public class CustomerResource {
         return entity;
     }
 
-    // Get all Tickets by user
-    @GetMapping("/customers/{id:\\d+}/tickets")
-    public List<Ticket> getAllTicketsByUserId(@PathVariable(name = "id") int customerId) {
-        return customerService.getAllTickets(customerId);
-    }
+
 
     // Create a faulty unit
     @Validated

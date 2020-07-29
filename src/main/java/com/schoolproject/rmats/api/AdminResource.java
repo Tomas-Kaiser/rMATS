@@ -33,11 +33,6 @@ public class AdminResource {
         return ("<h1>This is for admin!</h1>");
     }
 
-    @GetMapping("/tickets")
-    public List<Ticket> getAllTickets(){
-        return adminService.getAllTickets();
-    }
-
     @Validated
     @PostMapping("/{ticketId:\\d+}/replacement")
     @ResponseStatus(HttpStatus.CREATED)

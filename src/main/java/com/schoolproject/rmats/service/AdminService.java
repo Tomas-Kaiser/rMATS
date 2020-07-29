@@ -38,8 +38,4 @@ public class AdminService {
         replacementUnit.setTrackingNumber(replacementUnitUpdate.getTrackingNumber());
         replacementRepository.save(replacementUnit);
     }
-
-    public List<Ticket> getAllTickets(){
-        return ticketRepository.findAll();
-    }
 }

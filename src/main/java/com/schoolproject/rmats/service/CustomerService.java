@@ -57,9 +57,7 @@ public class CustomerService {
         return ticketRT;
     }
 
-    public List<Ticket> getAllTickets(int userId){
-        return ticketRepository.findByUserId(userId);
-    }
+
 
     @Transactional
     public FaultyRT createFaulty(FaultyUnit faultyUnit) {
