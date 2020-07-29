@@ -151,9 +151,9 @@ public class CustomerResource {
     }
 
     // Delete an address
-    @DeleteMapping("/customers/{id:\\d+}/address")
-    public void deleteAddressById(@PathVariable(name = "id") int customerId){
-        customerService.deleteAddressById(customerId);
+    @DeleteMapping("/customers/{id:\\d+}/address/{addressId:\\d+}")
+    public void deleteAddressById(@PathVariable(name = "id") int customerId, @PathVariable(name = "addressId") int addressId){
+        customerService.deleteAddressById(addressId);
     }
 
     // Set up an authorization

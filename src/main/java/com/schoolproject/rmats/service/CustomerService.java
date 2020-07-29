@@ -88,8 +88,8 @@ public class CustomerService {
         return addressRepository.findByUserId(customerId);
     }
 
-    public void deleteAddressById(int customerId){
-        addressRepository.deleteById(customerId);
+    public void deleteAddressById(int addressId){
+        addressRepository.deleteById(addressId);
     }
 
     @Transactional
