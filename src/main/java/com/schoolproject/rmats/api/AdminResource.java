@@ -2,7 +2,6 @@ package com.schoolproject.rmats.api;
 
 import com.schoolproject.rmats.api.to.ReplacementTO;
 import com.schoolproject.rmats.model.ReplacementUnit;
-import com.schoolproject.rmats.model.Ticket;
 import com.schoolproject.rmats.service.AdminService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @RequestMapping("/admin")
 @RestController
@@ -34,22 +32,23 @@ public class AdminResource {
     }
 
     @Validated
-    @PostMapping("/{ticketId:\\d+}/replacement")
+    @PostMapping("/replacement")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createReplacementUnits(@PathVariable(name = "ticketId") int ticketId,
-                                       @Valid @NotNull @RequestBody ReplacementTO replacementUnit
+    public void createReplacementUnits(@Valid @NotNull @RequestBody ReplacementTO replacementUnit
     ){
     // TODO: Refactor the code below into private method
+        log.info("action=PostReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
         ReplacementUnit entity = new ReplacementUnit();
         entity.setTicketId(replacementUnit.getTicketId());
         entity.setProcessed(false);
         entity.setStatus("In progress");
         entity.setCarrier(replacementUnit.getCarrier());
         entity.setModel(replacementUnit.getModel());
-        entity.setSerialNumber(replacementUnit.getNewSerialNumber());
+        entity.setNewSerialNumber(replacementUnit.getNewSerialNumber());
         entity.setTrackingNumber(replacementUnit.getTrackingNumber());
         entity.setComment(replacementUnit.getComment());
         adminService.createReplacementUnit(entity);
+        log.info("action=PostReplacementUnitEnd");
     }
 
     @Validated
@@ -64,7 +63,7 @@ public class AdminResource {
         entity.setStatus(replacementUnit.getStatus());
         entity.setCarrier(replacementUnit.getCarrier());
         entity.setModel(replacementUnit.getModel());
-        entity.setSerialNumber(replacementUnit.getNewSerialNumber());
+        entity.setNewSerialNumber(replacementUnit.getNewSerialNumber());
         entity.setTrackingNumber(replacementUnit.getTrackingNumber());
         entity.setComment(replacementUnit.getComment());
         log.info("action=UpdatateReplacementUnitEnd, receive/model, model={} ", replacementUnit.getModel());

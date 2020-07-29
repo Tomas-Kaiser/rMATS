@@ -29,7 +29,7 @@ public class ReplacementUnit {
     private String model;
 
     @Column(name = "new_serial_number")
-    private String serialNumber;
+    private String newSerialNumber;
 
     @Column(name = "shipper_comment")
     private String comment;
@@ -47,7 +47,7 @@ public class ReplacementUnit {
         this.carrier = carrier;
         this.trackingNumber = trackingNumber;
         this.model = model;
-        this.serialNumber = serialNumber;
+        this.newSerialNumber = serialNumber;
         this.comment = comment;
     }
 
@@ -72,8 +72,8 @@ public class ReplacementUnit {
         return model;
     }
 
-    public String getSerialNumber() {
-        return serialNumber;
+    public String getNewSerialNumber() {
+        return newSerialNumber;
     }
 
     public String getComment() {
@@ -100,8 +100,8 @@ public class ReplacementUnit {
         this.model = model;
     }
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
+    public void setNewSerialNumber(String serialNumber) {
+        this.newSerialNumber = serialNumber;
     }
 
     public void setComment(String comment) {

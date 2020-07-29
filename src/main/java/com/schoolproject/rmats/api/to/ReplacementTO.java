@@ -11,10 +11,10 @@ public class ReplacementTO {
     private Integer ticketId;
 
     private String carrier;
-    @Size(min = 7)
+    @Size(min = 5)
     private String trackingNumber;
     private String model;
-    @Size(min = 7)
+    @Size(min = 5)
     private String newSerialNumber;
     private String comment;
 
