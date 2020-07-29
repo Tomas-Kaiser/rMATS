@@ -28,7 +28,7 @@ public class AdminService {
     public void updateReplacementUnit(ReplacementUnit replacementUnitUpdate, int replacementId){
         ReplacementUnit replacementUnit = replacementRepository.findById(replacementId);
         replacementUnit.setComment(replacementUnitUpdate.getComment());
-        replacementUnit.setNewSerialNumber(replacementUnitUpdate.getTrackingNumber());
+        replacementUnit.setNewSerialNumber(replacementUnitUpdate.getNewSerialNumber());
         replacementUnit.setModel(replacementUnitUpdate.getModel());
         replacementUnit.setCarrier(replacementUnitUpdate.getCarrier());
         replacementUnit.setStatus(replacementUnitUpdate.getStatus());
