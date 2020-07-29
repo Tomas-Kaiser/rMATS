@@ -38,14 +38,7 @@ public class AdminResource {
     ){
     // TODO: Refactor the code below into private method
         log.info("action=PostReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
-        ReplacementUnit entity = new ReplacementUnit();
-        entity.setTicketId(replacementUnit.getTicketId());
-        entity.setStatus(replacementUnit.getStatus());
-        entity.setCarrier(replacementUnit.getCarrier());
-        entity.setModel(replacementUnit.getModel());
-        entity.setNewSerialNumber(replacementUnit.getNewSerialNumber());
-        entity.setTrackingNumber(replacementUnit.getTrackingNumber());
-        entity.setComment(replacementUnit.getComment());
+        ReplacementUnit entity = convertToEntity(replacementUnit);
         adminService.createReplacementUnit(entity);
         log.info("action=PostReplacementUnitEnd");
     }
@@ -56,6 +49,12 @@ public class AdminResource {
     public void updateReplacementUnit(@PathVariable(name = "replacementId") int replacementId, @Valid @NotNull @RequestBody ReplacementTO replacementUnit){
         // TODO: Refactor the code below into private method
         log.info("action=UpdatateReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
+        ReplacementUnit entity = convertToEntity(replacementUnit);
+        log.info("action=UpdatateReplacementUnitEnd, receive/model, model={} ", replacementUnit.getModel());
+        adminService.updateReplacementUnit(entity, replacementId);
+    }
+
+    private ReplacementUnit convertToEntity(ReplacementTO replacementUnit){
         ReplacementUnit entity = new ReplacementUnit();
         entity.setTicketId(replacementUnit.getTicketId());
         entity.setStatus(replacementUnit.getStatus());
@@ -64,8 +63,7 @@ public class AdminResource {
         entity.setNewSerialNumber(replacementUnit.getNewSerialNumber());
         entity.setTrackingNumber(replacementUnit.getTrackingNumber());
         entity.setComment(replacementUnit.getComment());
-        log.info("action=UpdatateReplacementUnitEnd, receive/model, model={} ", replacementUnit.getModel());
-        adminService.updateReplacementUnit(entity, replacementId);
+        return entity;
     }
 
 }
