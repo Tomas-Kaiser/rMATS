@@ -121,10 +121,8 @@ public class CustomerResource {
     }
 
     // Get all faulty units
-    @GetMapping("/customers/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
-    public List<FaultyUnit> getFaulty(@PathVariable(name = "id") int customerId,
-                                @PathVariable(name = "ticketId") int ticketId) {
-
+    @GetMapping("/tickets/{ticketId:\\d+}/faulty")
+    public List<FaultyUnit> getFaulty(@PathVariable(name = "ticketId") int ticketId) {
         return customerService.getAllFaultyUnits(ticketId);
     }
 
