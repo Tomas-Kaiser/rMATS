@@ -22,8 +22,8 @@ public class TicketResource {
     }
 
     // Get all tickets by user
-    @GetMapping("/{id:\\d+}/tickets")
-    public List<Ticket> getAllTicketsByUserId(@PathVariable(name = "id") int customerId) {
+    @GetMapping("/{customerId:\\d+}/tickets")
+    public List<Ticket> getAllTicketsByUserId(@PathVariable(name = "customerId") int customerId) {
         return ticketService.getAllticketsByUserId(customerId);
     }
 
