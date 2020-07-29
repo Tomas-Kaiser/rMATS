@@ -91,9 +91,9 @@ public class CustomerResource {
         return entity;
     }
 
-    // Get all Tickets
+    // Get all Tickets by user
     @GetMapping("/customers/{id:\\d+}/tickets")
-    public List<Ticket> getAllTickets(@PathVariable(name = "id") int customerId) {
+    public List<Ticket> getAllTicketsByUserId(@PathVariable(name = "id") int customerId) {
         return customerService.getAllTickets(customerId);
     }
 
