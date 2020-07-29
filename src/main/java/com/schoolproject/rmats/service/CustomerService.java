@@ -21,7 +21,7 @@ public class CustomerService {
     private final FaultyUnitRepository faultyUnitRepository;
     private final AddressRepository addressRepository;
     private final AuthorizationRepository authorizationRepository;
-    private final ReplacementRepository replacementRepository;
+
 
     @Autowired
     public CustomerService(CustomerRepository customerRepository,
@@ -35,7 +35,6 @@ public class CustomerService {
         this.faultyUnitRepository = faultyUnitRepository;
         this.addressRepository = addressRepository;
         this.authorizationRepository = authorizationRepository;
-        this.replacementRepository = replacementRepository;
     }
 
     @Transactional
@@ -94,8 +93,6 @@ public class CustomerService {
         authorizationRepository.save(authorization);
     }
 
-    public List<ReplacementUnit> getReplacement(int ticketId){
-        return replacementRepository.findByTicketId(ticketId);
-    }
+
 
 }
