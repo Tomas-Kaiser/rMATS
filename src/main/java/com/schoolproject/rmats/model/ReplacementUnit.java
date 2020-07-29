@@ -10,32 +10,38 @@ public class ReplacementUnit {
     @Id
     @Column(name = "replacement_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer replacementId;
 
     @Column(name = "ticket_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ticketId;
 
-    @Column(name = "isProcessed", columnDefinition = "TINYINT")
+    @Column(name = "is_processed", columnDefinition="TINYINT(1)", nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    @Transient
     private Boolean isProcessed;
+
     @Column(name = "current_status")
     private String status;
     private String carrier;
+
     @Column(name = "tracking_number")
     private String trackingNumber;
     private String model;
+
     @Column(name = "new_serial_number")
     private String serialNumber;
+
     @Column(name = "shipper_comment")
     private String comment;
+    public void setReplacementId(Integer replacementId) {
+        this.replacementId = replacementId;
+    }
 
     public ReplacementUnit() {
     }
 
-    public ReplacementUnit(Integer id, Boolean isProcessed, String status, String carrier, String trackingNumber, String model, String serialNumber, String comment) {
-        this.id = id;
+    public ReplacementUnit(Integer replacementId, Boolean isProcessed, String status, String carrier, String trackingNumber, String model, String serialNumber, String comment) {
+        this.replacementId = replacementId;
         this.isProcessed = isProcessed;
         this.status = status;
         this.carrier = carrier;
@@ -45,9 +51,6 @@ public class ReplacementUnit {
         this.comment = comment;
     }
 
-    public Integer getId() {
-        return id;
-    }
 
     public Boolean isProcessed() {
         return isProcessed;
@@ -75,10 +78,6 @@ public class ReplacementUnit {
 
     public String getComment() {
         return comment;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setProcessed(Boolean processed) {
@@ -119,5 +118,9 @@ public class ReplacementUnit {
 
     public Boolean getProcessed() {
         return isProcessed;
+    }
+
+    public Integer getReplacementId() {
+        return replacementId;
     }
 }

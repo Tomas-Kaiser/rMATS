@@ -22,7 +22,7 @@ public class CustomerTO {
 
     @NotNull
     @Size(min = 9, max = 20)
-    @Pattern(regexp = "^(00|\\+)[1-9]\\d{12,15}")
+    //@Pattern(regexp = "^(00|\\+)[1-9]")
     private final String phone;
 
     @Size(min = 6, max = 50)
