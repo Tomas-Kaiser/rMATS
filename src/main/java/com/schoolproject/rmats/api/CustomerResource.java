@@ -150,6 +150,12 @@ public class CustomerResource {
         return customerService.getAllAddresses(customerId);
     }
 
+    // Delete an address
+    @DeleteMapping("/customers/{id:\\d+}/address")
+    public void deleteAddressById(@PathVariable(name = "id") int customerId){
+        customerService.deleteAddressById(customerId);
+    }
+
     // Set up an authorization
     @Validated
     @PostMapping("/customers/authorization")

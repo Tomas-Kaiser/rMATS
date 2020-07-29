@@ -88,6 +88,10 @@ public class CustomerService {
         return addressRepository.findByUserId(customerId);
     }
 
+    public void deleteAddressById(int customerId){
+        addressRepository.deleteById(customerId);
+    }
+
     @Transactional
     public void addAuthorization(Authorization authorization){
         authorizationRepository.save(authorization);
