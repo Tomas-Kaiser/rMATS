@@ -16,10 +16,6 @@ public class ReplacementUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ticketId;
 
-    @Column(name = "is_processed", columnDefinition="TINYINT(1)", nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private Boolean isProcessed;
-
     @Column(name = "current_status")
     private String status;
     private String carrier;
@@ -42,18 +38,12 @@ public class ReplacementUnit {
 
     public ReplacementUnit(Integer replacementId, Boolean isProcessed, String status, String carrier, String trackingNumber, String model, String serialNumber, String comment) {
         this.replacementId = replacementId;
-        this.isProcessed = isProcessed;
         this.status = status;
         this.carrier = carrier;
         this.trackingNumber = trackingNumber;
         this.model = model;
         this.newSerialNumber = serialNumber;
         this.comment = comment;
-    }
-
-
-    public Boolean isProcessed() {
-        return isProcessed;
     }
 
     public String getStatus() {
@@ -78,10 +68,6 @@ public class ReplacementUnit {
 
     public String getComment() {
         return comment;
-    }
-
-    public void setProcessed(Boolean processed) {
-        isProcessed = processed;
     }
 
     public void setStatus(String status) {
@@ -114,10 +100,6 @@ public class ReplacementUnit {
 
     public void setTicketId(Integer ticketId) {
         this.ticketId = ticketId;
-    }
-
-    public Boolean getProcessed() {
-        return isProcessed;
     }
 
     public Integer getReplacementId() {

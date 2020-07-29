@@ -40,8 +40,7 @@ public class AdminResource {
         log.info("action=PostReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
         ReplacementUnit entity = new ReplacementUnit();
         entity.setTicketId(replacementUnit.getTicketId());
-        entity.setProcessed(false);
-        entity.setStatus("In progress");
+        entity.setStatus(replacementUnit.getStatus());
         entity.setCarrier(replacementUnit.getCarrier());
         entity.setModel(replacementUnit.getModel());
         entity.setNewSerialNumber(replacementUnit.getNewSerialNumber());
@@ -59,7 +58,6 @@ public class AdminResource {
         log.info("action=UpdatateReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
         ReplacementUnit entity = new ReplacementUnit();
         entity.setTicketId(replacementUnit.getTicketId());
-        entity.setProcessed(replacementUnit.getProcessed());
         entity.setStatus(replacementUnit.getStatus());
         entity.setCarrier(replacementUnit.getCarrier());
         entity.setModel(replacementUnit.getModel());

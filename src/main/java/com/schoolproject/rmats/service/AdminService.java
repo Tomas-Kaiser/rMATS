@@ -32,7 +32,6 @@ public class AdminService {
         replacementUnit.setModel(replacementUnitUpdate.getModel());
         replacementUnit.setCarrier(replacementUnitUpdate.getCarrier());
         replacementUnit.setStatus(replacementUnitUpdate.getStatus());
-        replacementUnit.setProcessed(replacementUnitUpdate.getProcessed());
         replacementUnit.setTrackingNumber(replacementUnitUpdate.getTrackingNumber());
         replacementRepository.save(replacementUnit);
     }
