@@ -23,11 +23,17 @@ public class ReplacementResource {
         this.replacementService = replacementService;
     }
 
-    // Get Replacement unit detail
+    // Get Replacement unit by ticket id
     @GetMapping("/{ticketId:\\d+}/replacements")
-    public List<ReplacementUnit> getReplacement(@PathVariable(name = "ticketId") int ticketId){
+    public List<ReplacementUnit> getReplacementUnitByTicketId(@PathVariable(name = "ticketId") int ticketId){
         log.info("action=getReplacementStart");
         log.info("action=getReplacementEnd");
-        return replacementService.getReplacement(ticketId);
+        return replacementService.getReplacementUnitByTicketId(ticketId);
+    }
+
+    // Get Replacement unit by id
+    @GetMapping("replacements/{replacementId:\\d+}")
+    public ReplacementUnit getReplacementUnitById(@PathVariable(name = "replacementId") int replacementId){
+        return replacementService.getReplacementUnitById(replacementId);
     }
 }

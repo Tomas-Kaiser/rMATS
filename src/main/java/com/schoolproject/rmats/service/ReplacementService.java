@@ -16,7 +16,14 @@ public class ReplacementService {
         this.replacementRepository = replacementRepository;
     }
 
-    public List<ReplacementUnit> getReplacement(int ticketId){
+    // Get Replacement unit by ticket id
+    public List<ReplacementUnit> getReplacementUnitByTicketId(int ticketId){
         return replacementRepository.findByTicketId(ticketId);
     }
+
+    // Get Replacement unit by id
+    public ReplacementUnit getReplacementUnitById(int replacementId){
+        return replacementRepository.findById(replacementId);
+    }
+
 }
