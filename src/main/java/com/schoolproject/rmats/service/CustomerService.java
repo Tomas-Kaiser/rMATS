@@ -85,7 +85,7 @@ public class CustomerService {
         addressRepository.save(address);
     }
 
-    public List<Address> getAllAddresses(int customerId){
+    public List<Address> getAllAddressesByCustomerId(int customerId){
         return addressRepository.findByUserId(customerId);
     }
 
@@ -102,7 +102,6 @@ public class CustomerService {
     public List<Customer> getAllCustomers(){
         // Getting all users registered as admin or customer
         List<Customer> users = customerRepository.findAll();
-
 
         List<Customer> customers = new ArrayList<>();
         // Select only the users who has customer role
