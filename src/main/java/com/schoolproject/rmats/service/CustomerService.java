@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -95,6 +96,23 @@ public class CustomerService {
     @Transactional
     public void addAuthorization(Authorization authorization){
         authorizationRepository.save(authorization);
+    }
+
+    // Get all customers
+    public List<Customer> getAllCustomers(){
+        // Getting all users registered as admin or customer
+        List<Customer> users = customerRepository.findAll();
+
+
+        List<Customer> customers = new ArrayList<>();
+        // Select only the users who has customer role
+        for (Customer u : users) {
+            Authorization auth = authorizationRepository.findByEmail(u.getEmail());
+            if (auth.getAuthority().equals("ROLE_CUSTOMER")){
+                customers.add(u);
+            }
+        }
+        return customers;
     }
 
 

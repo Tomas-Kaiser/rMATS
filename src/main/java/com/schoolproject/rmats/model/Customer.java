@@ -26,10 +26,6 @@ public class Customer {
     @Column(columnDefinition = "TINYINT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean enabled;
-//    @Column(name = "")
-//    private List<Ticket> ticketList;
-//    @Column(name = "")
-//    private Address address;
 
 
     public Customer() {
