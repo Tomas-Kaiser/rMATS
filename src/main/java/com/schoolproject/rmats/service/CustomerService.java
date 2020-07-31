@@ -45,6 +45,10 @@ public class CustomerService {
         log.info("action=createCustomerEnd");
     }
 
+    public Customer getCustomerById(int customerId){
+        return customerRepository.findById(customerId);
+    }
+
     public TicketRT createTicket(Ticket ticket) {
         log.info("action=createTicketStart, raiseDate={}, customerComment={}", ticket.getRaiseDate(), ticket.getComment());
         ticketRepository.save(ticket);

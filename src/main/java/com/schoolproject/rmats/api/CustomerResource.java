@@ -70,6 +70,12 @@ public class CustomerResource {
         return entity;
     }
 
+    // Get a customer by id
+    @GetMapping("/customer/{id:\\d+}")
+    public Customer getCustomerById(@PathVariable(name = "id") int customerId){
+        return customerService.getCustomerById(customerId);
+    }
+
     // Creating a new ticket
     @Validated
     @PostMapping("/customers/{id:\\d+}/ticket")
