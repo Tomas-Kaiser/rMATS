@@ -127,40 +127,6 @@ public class CustomerResource {
         return customerService.getAllFaultyUnits(ticketId);
     }
 
-    // Adding a new address
-    @Validated
-    @PostMapping("/customers/{id:\\d+}/address")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addAddress(@PathVariable(name = "id") int customerId,
-                           @Valid @NotNull @RequestBody AddressTO address) {
-        log.info("action=createAddress, receive=customerId/address, method=POST, city={}", address.getCity());
-        Address entity = convertToEntity(address, customerId);
-        customerService.addAddress(entity);
-        log.info("action=createAddressEnd");
-    }
-
-    private Address convertToEntity(AddressTO address, int customerId){
-        Address entity = new Address();
-        entity.setStreet(address.getStreet());
-        entity.setZipCode(address.getZipCode());
-        entity.setCity(address.getCity());
-        entity.setCountry(address.getCountry());
-        entity.setUserId(customerId);
-        return entity;
-    }
-
-    // Getting addresses by customer
-    @GetMapping("/customers/{id:\\d+}/address")
-    public List<Address> getAllAddressesByCustomerId(@PathVariable(name = "id") int customerId){
-        return customerService.getAllAddressesByCustomerId(customerId);
-    }
-
-    // Delete an address
-    @DeleteMapping("/customers/{id:\\d+}/address/{addressId:\\d+}")
-    public void deleteAddressById(@PathVariable(name = "id") int customerId, @PathVariable(name = "addressId") int addressId){
-        customerService.deleteAddressById(addressId);
-    }
-
     // Set up an authorization
     @Validated
     @PostMapping("/customers/authorization")

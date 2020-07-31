@@ -20,7 +20,6 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final TicketRepository ticketRepository;
     private final FaultyUnitRepository faultyUnitRepository;
-    private final AddressRepository addressRepository;
     private final AuthorizationRepository authorizationRepository;
 
 
@@ -28,13 +27,11 @@ public class CustomerService {
     public CustomerService(CustomerRepository customerRepository,
                            TicketRepository ticketRepository,
                            FaultyUnitRepository faultyUnitRepository,
-                           AddressRepository addressRepository,
                            AuthorizationRepository authorizationRepository,
                            ReplacementRepository replacementRepository) {
         this.customerRepository = customerRepository;
         this.ticketRepository = ticketRepository;
         this.faultyUnitRepository = faultyUnitRepository;
-        this.addressRepository = addressRepository;
         this.authorizationRepository = authorizationRepository;
     }
 
@@ -84,18 +81,6 @@ public class CustomerService {
         return faultyUnitRepository.findByTicketId(ticketId);
     }
 
-    @Transactional
-    public void addAddress(Address address){
-        addressRepository.save(address);
-    }
-
-    public List<Address> getAllAddressesByCustomerId(int customerId){
-        return addressRepository.findByUserId(customerId);
-    }
-
-    public void deleteAddressById(int addressId){
-        addressRepository.deleteById(addressId);
-    }
 
     @Transactional
     public void addAuthorization(Authorization authorization){
