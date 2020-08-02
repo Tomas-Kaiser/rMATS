@@ -92,7 +92,7 @@ public class CustomerService {
         // Getting all users registered as admin or customer
         List<Customer> users = customerRepository.findAll();
 
-        List<Customer> customers = new ArrayList<>();
+        List<Customer> customers = new ArrayList<Customer>();
         // Select only the users who has customer role
         for (Customer u : users) {
             Authorization auth = authorizationRepository.findByEmail(u.getEmail());
