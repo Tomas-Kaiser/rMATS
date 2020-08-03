@@ -31,11 +31,6 @@ public class AdminResource {
         this.customerService = customerService;
     }
 
-    @GetMapping("")
-    public String admin(){
-        return ("<h1>This is for admin!</h1>");
-    }
-
     @GetMapping("/customers")
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
