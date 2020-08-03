@@ -1,6 +1,5 @@
 package com.schoolproject.rmats.model;
 
-
 import javax.persistence.*;
 import java.util.Date;
 
