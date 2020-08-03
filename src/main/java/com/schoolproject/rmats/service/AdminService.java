@@ -5,7 +5,6 @@ import com.schoolproject.rmats.dao.TicketRepository;
 import com.schoolproject.rmats.model.ReplacementUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @Service
@@ -26,7 +25,6 @@ public class AdminService {
 
     @Transactional
     public void updateReplacementUnit(ReplacementUnit replacementUnitUpdate, int replacementId){
-
 
         ReplacementUnit replacementUnit = replacementRepository.findById(replacementId);
         replacementUnit.setComment(replacementUnitUpdate.getComment());
