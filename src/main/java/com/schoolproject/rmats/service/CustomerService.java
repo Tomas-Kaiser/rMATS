@@ -67,7 +67,7 @@ public class CustomerService {
         log.info("action=createTicketEnd");
 
         log.info("action=createFaultyRTStart");
-        FaultyRT faultyRT = createFaultyRT(faultyUnit)
+        FaultyRT faultyRT = createFaultyRT(faultyUnit);
         log.info("action=createFaultyRTEND");
 
         return faultyRT;
