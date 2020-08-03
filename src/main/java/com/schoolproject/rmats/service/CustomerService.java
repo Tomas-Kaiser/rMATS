@@ -63,17 +63,21 @@ public class CustomerService {
     @Transactional
     public FaultyRT createFaulty(FaultyUnit faultyUnit) {
         log.info("action=createFaultyStart,  model={}",  faultyUnit.getModel());
-
         faultyUnitRepository.save(faultyUnit);
         log.info("action=createTicketEnd");
-        // TODO: Refactor the below code
+
         log.info("action=createFaultyRTStart");
+        FaultyRT faultyRT = createFaultyRT(faultyUnit)
+        log.info("action=createFaultyRTEND");
+
+        return faultyRT;
+    }
+
+    private FaultyRT createFaultyRT(FaultyUnit faultyUnit){
         FaultyRT faultyRT = new FaultyRT();
         faultyRT.setId(faultyUnit.getId());
         faultyRT.setModel(faultyUnit.getModel());
         faultyRT.setSerialNumber((faultyUnit.getSerialNumber()));
-        log.info("action=createFaultyRTEND");
-
         return faultyRT;
     }
 

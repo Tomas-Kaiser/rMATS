@@ -46,13 +46,6 @@ public class CustomerResource {
         log.info("action=createCustomerEnd");
 
         log.info("action=createCustomer&AddingAuthorizationStart, receive=/customer, method=POST, email={}", customer.getEmail());
-        // TODO: Refactor the below code!
-        /*
-        Authorization entityAuth = new Authorization();
-        entityAuth.setAuthority("ROLE_CUSTOMER");
-        entityAuth.setEmail(customer.getEmail());
-        */
-
         Authorization customerAuth = assignAuth(customer);
         customerService.addAuthorization(customerAuth);
         log.info("action=createCustomer&AddingAuthorizationEnd");
