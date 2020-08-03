@@ -98,8 +98,6 @@ public class CustomerResource {
         return entity;
     }
 
-
-
     // Create a faulty unit
     @Validated
     @PostMapping("/customers/{id:\\d+}/tickets/{ticketId:\\d+}/faulty")
@@ -134,12 +132,16 @@ public class CustomerResource {
     @PostMapping("/customers/authorization")
     @ResponseStatus(HttpStatus.CREATED)
     public void addAuthorization(@RequestBody AuthorizationTO authorization){
-// TODO: Refactor the code below into private method
         log.info("action=addAuthority, receive/authorization, email={}", authorization.getEmail());
+        Authorization entity = convertToEntity(authorization);
+        customerService.addAuthorization(entity);
+        log.info("action=addAuthorityEnd");
+    }
+
+    private Authorization convertToEntity(AuthorizationTO authorization){
         Authorization entity = new Authorization();
         entity.setAuthority(authorization.getAuthority());
         entity.setEmail(authorization.getEmail());
-        customerService.addAuthorization(entity);
-        log.info("action=addAuthorityEnd");
+        return entity;
     }
 }
