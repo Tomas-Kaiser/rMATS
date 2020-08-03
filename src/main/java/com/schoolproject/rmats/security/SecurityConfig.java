@@ -18,9 +18,12 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    @Qualifier("MyUserDetailsService")
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    public SecurityConfig(@Qualifier("MyUserDetailsService") UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public AuthenticationProvider authProvider() {
