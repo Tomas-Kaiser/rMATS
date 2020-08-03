@@ -43,6 +43,5 @@ class CustomerResourceTest {
         assertEquals(customer.getFirstName(), custRest.getFirstName());
         assertEquals(customer.getEmail(), custRest.getEmail());
 
-
     }
 }
