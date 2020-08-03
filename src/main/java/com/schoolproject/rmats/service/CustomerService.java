@@ -85,7 +85,6 @@ public class CustomerService {
         return faultyUnitRepository.findByTicketId(ticketId);
     }
 
-
     @Transactional
     public void addAuthorization(Authorization authorization){
         authorizationRepository.save(authorization);
@@ -106,7 +105,4 @@ public class CustomerService {
         }
         return customers;
     }
-
-
-
 }

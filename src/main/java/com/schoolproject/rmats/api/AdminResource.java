@@ -31,11 +31,13 @@ public class AdminResource {
         this.customerService = customerService;
     }
 
+    // Get all customers
     @GetMapping("/customers")
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
 
+    // Create a replacement unit
     @Validated
     @PostMapping("/replacement")
     @ResponseStatus(HttpStatus.CREATED)
@@ -47,6 +49,7 @@ public class AdminResource {
         log.info("action=PostReplacementUnitEnd");
     }
 
+    // Updating of replacement unit
     @Validated
     @PutMapping("/{replacementId:\\d+}/replacement")
     @ResponseStatus(HttpStatus.ACCEPTED)
