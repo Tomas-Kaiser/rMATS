@@ -15,7 +15,6 @@ import java.util.List;
 @CrossOrigin
 @RestController
 public class ReplacementResource {
-    public static final Logger log = LogManager.getLogger(CustomerResource.class);
     private final ReplacementService replacementService;
 
     @Autowired
@@ -26,8 +25,6 @@ public class ReplacementResource {
     // Get Replacement unit by ticket id
     @GetMapping("/{ticketId:\\d+}/replacements")
     public List<ReplacementUnit> getReplacementUnitByTicketId(@PathVariable(name = "ticketId") int ticketId){
-        log.info("action=getReplacementStart");
-        log.info("action=getReplacementEnd");
         return replacementService.getReplacementUnitByTicketId(ticketId);
     }
 
