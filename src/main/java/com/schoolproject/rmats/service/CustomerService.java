@@ -58,8 +58,6 @@ public class CustomerService {
         return ticketRT;
     }
 
-
-
     @Transactional
     public FaultyRT createFaulty(FaultyUnit faultyUnit) {
         log.info("action=createFaultyStart,  model={}",  faultyUnit.getModel());
