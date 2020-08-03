@@ -2,14 +2,12 @@ package com.schoolproject.rmats.api.to;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 public class ReplacementTO {
     @Positive
     private Integer ticketId;
-
     private String carrier;
     @Size(min = 5)
     private String trackingNumber;
@@ -17,9 +15,7 @@ public class ReplacementTO {
     @Size(min = 5)
     private String newSerialNumber;
     private String comment;
-
     private String status;
-
 
     @JsonCreator
     public ReplacementTO(@JsonProperty("ticketId") Integer ticketId,

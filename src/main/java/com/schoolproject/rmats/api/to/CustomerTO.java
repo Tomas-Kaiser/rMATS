@@ -1,9 +1,7 @@
 package com.schoolproject.rmats.api.to;
 
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.*;
 
 public class CustomerTO {
