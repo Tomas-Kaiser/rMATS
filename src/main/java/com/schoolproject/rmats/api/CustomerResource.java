@@ -41,18 +41,20 @@ public class CustomerResource {
         try{
             customerService.createCustomer(entity);
         } catch (Exception ex){
-            System.out.println("Exception HERE: ");
-            System.out.println(ex);
             return "Customer already created!";
         }
         log.info("action=createCustomerEnd");
 
         log.info("action=createCustomer&AddingAuthorizationStart, receive=/customer, method=POST, email={}", customer.getEmail());
         // TODO: Refactor the below code!
+        /*
         Authorization entityAuth = new Authorization();
         entityAuth.setAuthority("ROLE_CUSTOMER");
         entityAuth.setEmail(customer.getEmail());
-        customerService.addAuthorization(entityAuth);
+        */
+
+        Authorization customerAuth = assignAuth(customer);
+        customerService.addAuthorization(customerAuth);
         log.info("action=createCustomer&AddingAuthorizationEnd");
         return "Customer created!";
     }
@@ -68,6 +70,13 @@ public class CustomerResource {
         entity.setEnabled(true);
         entity.setPassword(bCryptPasswordEncoder.encode(customer.getPassword()));
         return entity;
+    }
+
+    private Authorization assignAuth(CustomerTO customer){
+        Authorization entityAuth = new Authorization();
+        entityAuth.setAuthority("ROLE_CUSTOMER");
+        entityAuth.setEmail(customer.getEmail());
+        return entityAuth;
     }
 
     // Get a customer by id
