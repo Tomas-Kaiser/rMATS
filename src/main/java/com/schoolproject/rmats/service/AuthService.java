@@ -24,11 +24,28 @@ public class AuthService {
     }
 
     public CustomerRT getCustomer(){
+        // Get authentication object of the authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        // Get the current authenticated user name
         String currentPrincipalName = authentication.getName();
+        // Get current customer object
         Customer currentCustomer = customerRepository.findByEmail(currentPrincipalName);
+        // get auth object of currently authorized user
         Authorization auth = authorizationRepository.findByEmail(currentCustomer.getEmail());
 
+        CustomerRT customerRT = convertToRTObject(currentCustomer);
+
+        // Assign the status of isAdmin
+        if (auth.getAuthority().equals("ROLE_CUSTOMER")){
+            customerRT.setIsAdmin(false);
+        } else {
+            customerRT.setIsAdmin(true);
+        }
+
+        return customerRT;
+    }
+
+    private CustomerRT convertToRTObject(Customer currentCustomer){
         CustomerRT customerRT = new CustomerRT();
         customerRT.setId(currentCustomer.getId());
         customerRT.setFirstName(currentCustomer.getFirstName());
@@ -36,13 +53,6 @@ public class AuthService {
         customerRT.setEmail(currentCustomer.getEmail());
         customerRT.setCompanyName(currentCustomer.getCompanyName());
         customerRT.setPhoneNumber(currentCustomer.getPhoneNumber());
-
-        if (auth.getAuthority().equals("ROLE_CUSTOMER")){
-            customerRT.setIsAdmin(false);
-        } else {
-            customerRT.setIsAdmin(true);
-        }
-
         return customerRT;
     }
 }
