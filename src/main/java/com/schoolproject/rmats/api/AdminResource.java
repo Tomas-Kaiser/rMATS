@@ -41,7 +41,6 @@ public class AdminResource {
     @ResponseStatus(HttpStatus.CREATED)
     public void createReplacementUnits(@Valid @NotNull @RequestBody ReplacementTO replacementUnit
     ){
-    // TODO: Refactor the code below into private method
         log.info("action=PostReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
         ReplacementUnit entity = convertToEntity(replacementUnit);
         adminService.createReplacementUnit(entity);
@@ -52,7 +51,6 @@ public class AdminResource {
     @PutMapping("/{replacementId:\\d+}/replacement")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateReplacementUnit(@PathVariable(name = "replacementId") int replacementId, @Valid @NotNull @RequestBody ReplacementTO replacementUnit){
-        // TODO: Refactor the code below into private method
         log.info("action=UpdatateReplacementUnit, receive/model, model={} ", replacementUnit.getModel());
         ReplacementUnit entity = convertToEntity(replacementUnit);
         log.info("action=UpdatateReplacementUnitEnd, receive/model, model={} ", replacementUnit.getModel());
