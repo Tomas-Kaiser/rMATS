@@ -21,11 +21,7 @@ public class AuthResource {
         this.authService = authService;
     }
 
-    @GetMapping("/admin/auth")
-    public String adminAuthentication(){
-        return ("<h1>Admin Auth</h1>");
-    }
-
+    // Authentication of the user
     @GetMapping("/customer/auth")
     @ResponseBody
     public CustomerRT customerAuthentication(){
