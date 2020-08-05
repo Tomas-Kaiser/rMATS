@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Authorization {
     @Id
     private String email;
-    private String Authority;
+    private String authority;
 
     public Authorization() {
     }
@@ -23,10 +23,10 @@ public class Authorization {
     }
 
     public String getAuthority() {
-        return Authority;
+        return authority;
     }
 
     public void setAuthority(String authority) {
-        Authority = authority;
+        authority = authority;
     }
 }
